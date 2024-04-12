@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <button id="button">Click Me To Run Function!</button>
+    <script>
+      async function getWeatherData() {
+        let entry = prompt("Please enter a location");
+        await fetch(
+          `https://api.weatherapi.com/v1/current.json?key=691b37fffd0d4936834172631242603&q=${entry}&aqi=no`
+        )
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (response) {
+            console.log(response);
+            console.log(response.location.country);
+          });
+        console.log("Here is that code you were looking for!");
+      }
+
+      const btn = document.getElementById("button");
+
+      btn.addEventListener("click", function () {
+        console.log(btn);
+        getWeatherData();
+      });
+    </script>
+  </body>
+</html>
